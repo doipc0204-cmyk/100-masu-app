@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
-import { Trophy, Download } from 'lucide-react';
+import { Trophy } from 'lucide-react';
 
 export default function Page() {
   const [checkedItems, setCheckedItems] = useState<{num: number, date: string}[]>([]);
@@ -17,7 +17,7 @@ export default function Page() {
   };
 
   return (
-    <div className="p-4 max-w-4xl mx-auto min-h-screen bg-gray-50">
+    <div className="p-4 max-w-4xl mx-auto min-h-screen bg-gray-50 text-gray-800">
       <h1 className="text-2xl font-bold mb-6 flex items-center gap-2 text-blue-600">
         <Trophy /> 100マス・チャレンジ
       </h1>
@@ -29,8 +29,8 @@ export default function Page() {
             <button
               key={num}
               onClick={() => toggleCheck(num)}
-              className={`aspect-square border rounded text-[10px] flex flex-col items-center justify-center ${
-                check ? 'bg-blue-500 text-white' : 'bg-white text-gray-400'
+              className={`aspect-square border rounded text-[10px] flex flex-col items-center justify-center transition-colors ${
+                check ? 'bg-blue-500 text-white' : 'bg-white text-gray-400 hover:bg-blue-50'
               }`}
             >
               <span>{num}</span>
@@ -39,6 +39,9 @@ export default function Page() {
           );
         })}
       </div>
+      <p className="mt-4 text-sm text-gray-500 text-center">
+        チェックしたマスはブラウザを閉じるとリセットされます（まずは表示テスト用です）
+      </p>
     </div>
   );
 }
